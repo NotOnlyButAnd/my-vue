@@ -8,6 +8,7 @@
                 v-bind:id="article.id"
                 v-bind:title="article.title"
                 v-bind:body="article.body"
+                v-bind:isPublicated="article.isPublicated"
                 
             >
             </Article>
@@ -36,17 +37,20 @@ export default {
               {
                   id: 1,
                   title: 'TITLE 1',
-                  body: 'Body 1 - Learn vue'
+                  body: 'Body 1 - Learn vue',
+                  isPublicated: true
               },
               {
                   id: 2,
                   title: 'TITLE 2',
-                  body: 'Body 2 - Learn about single-file components'
+                  body: 'Body 2 - Learn about single-file components',
+                  isPublicated: false
               },
               {
                   id: 3,
                   title: 'TITLE 3',
-                  body: 'Body 3 - Fall in love'
+                  body: 'Body 3 - Fall in love',
+                  isPublicated: true
               }
           ]
       }

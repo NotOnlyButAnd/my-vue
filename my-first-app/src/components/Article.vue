@@ -1,16 +1,14 @@
 <template>
-  <div class="article">
-        <li>
-            <h1>
-                ID: {{ id }}        
-            </h1>
-            <h1 v-if="title">
-                {{ title }}        
-            </h1>
-            <p v-if="body">
-                {{ body }}        
-            </p>
-        </li>
+  <div class="article" v-bind:class="{nonPublicated: !isPublicated}">
+    <h1 v-if="id">
+      ID: {{ id }}        
+    </h1>
+    <h1 v-if="title">
+      {{ title }}        
+    </h1>
+    <p v-if="body">
+      {{ body }}        
+    </p> 
   </div>
 </template>
 
@@ -22,7 +20,8 @@ export default {
     msg: String,
     title: String,
     body: String,
-    id: Number
+    id: Number,
+    isPublicated: Boolean
   }
 }
 </script>
@@ -39,5 +38,8 @@ export default {
 h1{
     color: #2c503a;
     font-size: 1em;
+}
+.nonPublicated{
+  background-color: #995252;
 }
 </style>
