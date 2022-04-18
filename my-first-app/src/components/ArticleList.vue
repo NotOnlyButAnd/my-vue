@@ -9,7 +9,7 @@
                 v-bind:title="article.title"
                 v-bind:body="article.body"
                 v-bind:isPublicated="article.isPublicated"
-                
+                v-bind:author="article.author"
             >
             </Article>
         </ul>
@@ -38,19 +38,22 @@ export default {
                   id: 1,
                   title: 'TITLE 1',
                   body: 'Body 1 - Learn vue',
-                  isPublicated: true
+                  isPublicated: true,
+                  author: 'Bob Marley'
               },
               {
                   id: 2,
                   title: 'TITLE 2',
                   body: 'Body 2 - Learn about single-file components',
-                  isPublicated: false
+                  isPublicated: false,
+                  author: 'Mark Twen'
               },
               {
                   id: 3,
                   title: 'TITLE 3',
                   body: 'Body 3 - Fall in love',
-                  isPublicated: true
+                  isPublicated: true,
+                  author: 'Elisabeth Tetcher'
               }
           ]
       }

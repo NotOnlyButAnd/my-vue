@@ -6,6 +6,10 @@
     <h1 v-if="title">
       {{ title }}        
     </h1>
+    <p v-if="author" v-bind:style="{'font-weight': isPublicatedFont}">
+      {{ upperName }}
+      <!-- {{isPublicatedFont()}} -->
+    </p>
     <p v-if="body">
       {{ body }}        
     </p> 
@@ -21,7 +25,21 @@ export default {
     title: String,
     body: String,
     id: Number,
-    isPublicated: Boolean
+    isPublicated: Boolean,
+    author: String,
+  },
+  computed:{
+    isPublicatedFont(){
+      if (this.isPublicated){
+        return 800;
+      }
+      else{
+        return 100;
+      } 
+    },
+    upperName(){
+      return this.author.toUpperCase();
+    }
   }
 }
 </script>
