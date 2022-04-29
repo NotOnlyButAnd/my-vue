@@ -1,6 +1,12 @@
 <template>
   <div id="articleList">
         <h1> {{ msg }} </h1> 
+
+        <!-- Добавление статей - кнопка и переход на новую страницу -->
+        <button name="add_article">
+            Добавить статью
+        </button> 
+
         <ul v-if="articles.length">
             <Article
                 v-for="article in articles"
@@ -16,12 +22,16 @@
         <p v-else>
             No articles in list
         </p>
+        <ArticleForm title="New title" body="" author="" isPublicated=""
+        v-on:add-article="addArticle" />
   </div>
 </template>
 
 <script>
 
 import Article from './Article.vue'
+import ArticleForm from './ArticleForm.vue'
+
 
 export default {
   name: 'ArticleList',
@@ -29,7 +39,18 @@ export default {
     msg: String
   },
   components:{
-      Article
+      Article,
+    ArticleForm
+  },
+  methods:{
+      addArticle: function(article){
+          let newArticle = {
+              id: this.articles.length+1,
+              ...article
+          }
+          this.articles.push(newArticle);
+          console.log(article.title);
+      }
   },
   data() {
       return{
