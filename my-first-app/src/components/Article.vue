@@ -3,16 +3,15 @@
     <h1 v-if="id">
       ID: {{ id }}        
     </h1>
-    <h1 v-if="title">
-      {{ title }}        
-    </h1>
+    <h3 v-if="body">{{ title }}</h3>
+    <h3 v-else v-bind:class="classObject">
+      <router-link :to="articleUrl">{{ title }}</router-link>
+    </h3>
     <p v-if="author" v-bind:style="{'font-weight': isPublicatedFont}">
       {{ upperName }}
       <!-- {{isPublicatedFont()}} -->
     </p>
-    <p v-if="body">
-      {{ body }}        
-    </p> 
+
   </div>
 </template>
 
@@ -29,6 +28,9 @@ export default {
     author: String,
   },
   computed:{
+    articleUrl: function() {
+      return '/article/' + this.id;
+    },
     isPublicatedFont(){
       if (this.isPublicated){
         return 800;

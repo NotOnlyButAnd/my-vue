@@ -7,7 +7,7 @@
             Добавить статью
         </button> 
 
-        <ul v-if="articles.length">
+        <ul v-if="this.$root.$data.articles.length">
             <Article
                 v-for="article in articles"
                 v-bind:key="article.id"
