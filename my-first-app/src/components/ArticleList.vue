@@ -28,10 +28,15 @@
 </template>
 
 <script>
-
 import Article from './Article.vue'
 import ArticleForm from './ArticleForm.vue'
+//import Articles from './Articles.json'
 
+// const routes = [
+//     { path: '/Articles.json', component: Articles}
+// ]
+
+// const router = new VueRouter({routes})
 
 export default {
   name: 'ArticleList',
@@ -39,7 +44,7 @@ export default {
     msg: String
   },
   components:{
-      Article,
+    Article,
     ArticleForm
   },
   methods:{
@@ -54,32 +59,15 @@ export default {
   },
   data() {
       return{
-          articles: [
-              {
-                  id: 1,
-                  title: 'TITLE 1',
-                  body: 'Body 1 - Learn vue',
-                  isPublicated: true,
-                  author: 'Bob Marley'
-              },
-              {
-                  id: 2,
-                  title: 'TITLE 2',
-                  body: 'Body 2 - Learn about single-file components',
-                  isPublicated: false,
-                  author: 'Mark Twen'
-              },
-              {
-                  id: 3,
-                  title: 'TITLE 3',
-                  body: 'Body 3 - Fall in love',
-                  isPublicated: true,
-                  author: 'Elisabeth Tetcher'
-              }
-          ]
+          articles: []
       }
-  }
-
+  },
+  beforeMount: function(){
+        fetch('/Articles.json')
+        .then(response => response.json())
+        .then(articles => this.articles = articles);
+        console.log("Fetch data");
+      }
 }
 </script>
 

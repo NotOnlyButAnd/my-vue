@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import { ref, watchEffect } from "vue";
 
 export default {
   name: 'ArticleForm',
@@ -30,6 +31,13 @@ export default {
         isPublicated: this.isPublicated
       }
     }
+  },
+  setup(){
+      const name = ref('');
+      watchEffect(() =>{
+          console.log(this.isPublicated.value);
+      })
+      return {name};
   }
 }
 </script>
